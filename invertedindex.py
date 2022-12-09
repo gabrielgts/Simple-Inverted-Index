@@ -20,7 +20,7 @@ class InvertedIndex:
         tokens_without_sw = [
             word for word in terms if not word in stopwords.words()]
 
-        # tokens_without_sw = clean_text.split(' ')
+        #tokens_without_sw = clean_text.split(' ')
         appearances_dict = dict()
 
         for term in tokens_without_sw:
