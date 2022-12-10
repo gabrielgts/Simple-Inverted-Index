@@ -3,14 +3,15 @@ import re
 from nltk.tokenize import word_tokenize
 import nltk
 from nltk.corpus import stopwords
-
-nltk.download('stopwords')
-nltk.download('punkt')
+import pandas as pd
 
 class InvertedIndex:
     def __init__(self, db):
         self.index = dict()
         self.db = db
+        nltk.download('stopwords')
+        nltk.download('punkt')
+        
     def __repr__(self):
         return str(self.index)
         
@@ -48,3 +49,9 @@ class InvertedIndex:
             data_list[index] = term[0].frequency
         data_list = dict(sorted(data_list.items(), key=lambda item: item[1]))
         return data_list
+
+    def export_data_frame(self):
+        df = pd.DataFrame([self.index])
+        df.to_csv('indexes.csv', encoding='utf-8',
+                  index=True, sep=',')
+

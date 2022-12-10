@@ -2,6 +2,7 @@ class Database:
     # representation of database, storage in memory
     def __init__(self):
         self.db = dict()
+        
     def __repr__(self):
         return str(self.__dict__)
     
@@ -13,3 +14,6 @@ class Database:
 
     def remove(self, document):
         return self.db.pop(document['id'], None)
+
+    def export(self, document):
+        return self
